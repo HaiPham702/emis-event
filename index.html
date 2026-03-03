@@ -1,0 +1,516 @@
+﻿<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thư Mời Sự Kiện Chị Em Giáo Dục Tư Thục</title>
+  <meta name="description" content="Thư mời sự kiện dành riêng cho chị em khối giáo dục tư thục: thời gian 16h30, Thứ Sáu ngày 6/2/2026, dress code Trắng - Hồng - Đỏ, không gian ấm áp và ý nghĩa." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#f06292" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Thư Mời Sự Kiện Chị Em Giáo Dục Tư Thục" />
+  <meta property="og:description" content="Hẹn gặp chị em tại sự kiện thật vui và ý nghĩa lúc 16h30, Thứ Sáu ngày 6/2/2026. Dress code: Trắng, Hồng, Đỏ." />
+  <meta property="og:image" content="./thumal.png" />
+  <meta property="og:image:alt" content="Thumbnail thư mời sự kiện chị em giáo dục tư thục" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Thư Mời Sự Kiện Chị Em Giáo Dục Tư Thục" />
+  <meta name="twitter:description" content="Sự kiện dành riêng cho chị em khối giáo dục tư thục lúc 16h30, Thứ Sáu ngày 6/2/2026." />
+  <meta name="twitter:image" content="./thumal.png" />
+  <meta property="og:image" itemprop="thumbnailUrl" content="./thumal.png">
+  <meta name="twitter:image" content="./thumal.png">
+  <link rel="icon" type="image/png" href="./icon.png" />
+  <link rel="apple-touch-icon" href="./icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-soft: #fff6f8;
+      --white: #ffffff;
+      --pink-100: #ffe9f0;
+      --pink-200: #ffd7e6;
+      --pink-300: #ffb8d3;
+      --pink-500: #f06292;
+      --red-500: #e53935;
+      --red-600: #c62828;
+      --text-main: #6a1b2d;
+      --text-soft: #8a3b54;
+      --shadow: 0 18px 40px rgba(229, 57, 53, 0.15);
+      --radius-xl: 28px;
+      --radius-md: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: "Quicksand", sans-serif;
+      color: var(--text-main);
+      background:
+        radial-gradient(circle at 12% 14%, rgba(255, 204, 220, 0.75), transparent 28%),
+        radial-gradient(circle at 88% 82%, rgba(255, 182, 193, 0.65), transparent 34%),
+        linear-gradient(145deg, #ffffff 0%, #fff4f7 52%, #ffe8ef 100%);
+      overflow-x: hidden;
+    }
+
+    .petals {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .roses {
+      position: fixed;
+      inset: -12vh -10vw;
+      pointer-events: none;
+      z-index: 4;
+      overflow: hidden;
+    }
+
+    .petal {
+      position: absolute;
+      top: -12vh;
+      width: var(--size);
+      height: calc(var(--size) * 0.75);
+      opacity: var(--opacity);
+      background: radial-gradient(circle at 28% 35%, #ffd8e8 10%, #ff78ad 58%, #f44336 100%);
+      border-radius: 70% 30% 65% 35% / 60% 35% 65% 40%;
+      box-shadow: 0 3px 8px rgba(229, 57, 53, 0.18);
+      animation: drift var(--dur) linear infinite;
+      animation-delay: var(--delay);
+    }
+
+    .rose {
+      position: absolute;
+      left: var(--start-x);
+      top: var(--start-y);
+      display: block;
+      line-height: 1;
+      font-size: var(--size);
+      opacity: var(--opacity);
+      text-shadow: 0 4px 10px rgba(198, 40, 40, 0.25);
+      filter: saturate(1.05);
+      animation: roseFlyAcross var(--dur) linear infinite;
+      animation-delay: var(--delay);
+      will-change: transform, opacity;
+    }
+
+    @keyframes drift {
+      0% {
+        transform: translate3d(0, -8vh, 0) rotate(0deg);
+      }
+      40% {
+        transform: translate3d(calc(var(--sway) * 0.55), 38vh, 0) rotate(135deg);
+      }
+      100% {
+        transform: translate3d(var(--sway), 110vh, 0) rotate(320deg);
+      }
+    }
+
+    @keyframes roseFlyAcross {
+      0% {
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(0.86);
+        opacity: 0;
+      }
+      12% {
+        opacity: var(--opacity);
+      }
+      36% {
+        transform: translate3d(var(--x1), var(--y1), 0) rotate(105deg) scale(1.02);
+        opacity: var(--opacity);
+      }
+      70% {
+        transform: translate3d(var(--x2), var(--y2), 0) rotate(238deg) scale(1.04);
+        opacity: var(--opacity);
+      }
+      88% {
+        opacity: var(--opacity);
+      }
+      100% {
+        transform: translate3d(var(--travel-x), var(--travel-y), 0) rotate(360deg) scale(0.9);
+        opacity: 0;
+      }
+    }
+
+    .page {
+      position: relative;
+      z-index: 3;
+      width: min(980px, 92vw);
+      margin: 6vh auto;
+      padding: 2.6rem;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.93), rgba(255, 246, 250, 0.92));
+      border: 1px solid rgba(255, 165, 191, 0.45);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
+      animation: cardIn 0.95s ease-out both;
+    }
+
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 1.8rem;
+      animation: fadeUp 1s ease both;
+    }
+
+    .intro h1 {
+      margin: 0.3rem 0 0.65rem;
+      font-family: "Dancing Script", cursive;
+      font-size: clamp(2.1rem, 5.8vw, 3.8rem);
+      line-height: 1.1;
+      color: var(--red-600);
+      text-shadow: 0 8px 20px rgba(198, 40, 40, 0.2);
+    }
+
+    .intro p {
+      margin: 0 auto;
+      max-width: 720px;
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: var(--text-soft);
+      line-height: 1.65;
+    }
+
+    .icon-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.85rem;
+      font-size: 1.45rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.1rem;
+      margin-top: 1.4rem;
+    }
+
+    .info-card {
+      background: linear-gradient(140deg, #fff9fb 0%, #ffeaf2 100%);
+      border: 1px solid rgba(240, 98, 146, 0.25);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.2rem;
+      min-height: 130px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.5rem;
+      box-shadow: 0 10px 24px rgba(240, 98, 146, 0.12);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .info-card:nth-child(2) {
+      animation-delay: 0.14s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(229, 57, 53, 0.2);
+      border-color: rgba(229, 57, 53, 0.42);
+    }
+
+    .label {
+      font-size: 0.94rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #c2185b;
+    }
+
+    .value {
+      font-size: clamp(1.08rem, 3vw, 1.4rem);
+      font-weight: 700;
+      line-height: 1.4;
+      color: #b71c1c;
+    }
+
+    .dress {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      padding: 0.32rem 0.75rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      border: 1px solid rgba(183, 28, 28, 0.15);
+      background: var(--white);
+    }
+
+    .chip.pink {
+      background: #ffd6e6;
+    }
+
+    .chip.red {
+      background: #ffc9c7;
+    }
+
+    .note {
+      margin-top: 1.3rem;
+      padding: 1.05rem 1.15rem;
+      border-radius: var(--radius-md);
+      border: 1px dashed rgba(229, 57, 53, 0.45);
+      background: linear-gradient(180deg, rgba(255, 252, 253, 0.92), rgba(255, 236, 242, 0.85));
+      color: #7b2141;
+      font-size: clamp(0.98rem, 2.1vw, 1.08rem);
+      line-height: 1.7;
+      animation: fadeUp 1s ease both;
+      animation-delay: 0.25s;
+    }
+
+    .note strong {
+      color: var(--red-600);
+    }
+
+    .cta-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 1.65rem;
+      animation: fadeUp 1s ease both;
+      animation-delay: 0.32s;
+    }
+
+    .cta {
+      border: none;
+      border-radius: 999px;
+      padding: 0.85rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(95deg, #ef5350, #ec407a);
+      box-shadow: 0 12px 24px rgba(236, 64, 122, 0.28);
+      cursor: pointer;
+      transition: transform 0.24s ease, box-shadow 0.24s ease, filter 0.24s ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 16px 30px rgba(229, 57, 53, 0.35);
+      filter: saturate(1.05);
+    }
+
+    .cta:active {
+      transform: translateY(-1px) scale(0.995);
+    }
+
+    .footer-text {
+      margin-top: 1.15rem;
+      text-align: center;
+      color: var(--text-soft);
+      font-size: 0.98rem;
+      animation: fadeUp 1s ease both;
+      animation-delay: 0.42s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .page {
+        padding: 2.2rem 1.5rem;
+        margin: 4.2vh auto;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page {
+        width: min(94vw, 760px);
+        padding: 1.8rem 1rem;
+      }
+
+      .info-card {
+        min-height: 116px;
+      }
+
+      .note {
+        padding: 0.95rem 0.9rem;
+      }
+
+      .cta {
+        width: 100%;
+        max-width: 320px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .intro,
+      .info-card,
+      .note,
+      .cta-wrap,
+      .footer-text,
+      .page {
+        animation: none !important;
+      }
+
+      .info-card,
+      .cta {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="petals" aria-hidden="true" id="petals"></div>
+  <div class="roses" aria-hidden="true" id="roses"></div>
+
+  <main class="page" role="main">
+    <section class="intro">
+      <h1>Thư Mời Chị Em Giáo Dục Tư Thục</h1>
+      <p>
+        Một buổi gặp gỡ ấm áp, duyên dáng và tràn đầy năng lượng tích cực dành riêng cho phái đẹp trong khối giáo dục tư thục.
+      </p>
+    </section>
+
+    <section class="grid" aria-label="Thông tin sự kiện">
+      <article class="info-card">
+        <div class="label">Thời gian</div>
+        <div class="value">16h30, Thứ Sáu, ngày 6/2/2026</div>
+      </article>
+
+      <article class="info-card">
+        <div class="label">Địa điểm</div>
+        <div class="value">Phòng Đào Tạo</div>
+      </article>
+
+      <article class="info-card">
+        <div class="label">Dress Code</div>
+        <div class="value dress">
+          <span class="chip">Trắng</span>
+          <span class="chip pink">Hồng</span>
+          <span class="chip red">Đỏ</span>
+        </div>
+      </article>
+    </section>
+
+    <section class="note" aria-label="Lời nhắn đặc biệt">
+      <strong>💌 Lời nhắn đặc biệt:</strong>
+      “Chiều hôm đó, các chị em mình không cần đặt đồ uống hay mua gì ăn nhé! Đơn vị đã chuẩn bị chu đáo cho chị em rồi ạ 💕”
+    </section>
+
+    <div class="cta-wrap">
+      <button class="cta" type="button" aria-label="Lời mời tham dự sự kiện">Hẹn gặp bạn tại sự kiện</button>
+    </div>
+
+    <p class="footer-text">“Hẹn gặp lại bạn tại sự kiện thật vui và ý nghĩa này!”</p>
+  </main>
+
+  <script>
+    (function createPetals() {
+      const container = document.getElementById("petals");
+      if (!container) return;
+
+      const petalCount = window.innerWidth < 700 ? 16 : 24;
+      const frag = document.createDocumentFragment();
+
+      for (let i = 0; i < petalCount; i += 1) {
+        const petal = document.createElement("span");
+        petal.className = "petal";
+
+        const size = 9 + Math.random() * 14;
+        const left = Math.random() * 100;
+        const opacity = 0.35 + Math.random() * 0.45;
+        const duration = 9 + Math.random() * 8;
+        const delay = Math.random() * -16;
+        const sway = (Math.random() * 20 - 10).toFixed(2) + "vw";
+
+        petal.style.setProperty("--size", `${size.toFixed(1)}px`);
+        petal.style.setProperty("--opacity", opacity.toFixed(2));
+        petal.style.setProperty("--dur", `${duration.toFixed(2)}s`);
+        petal.style.setProperty("--delay", `${delay.toFixed(2)}s`);
+        petal.style.setProperty("--sway", sway);
+        petal.style.left = `${left.toFixed(2)}vw`;
+
+        frag.appendChild(petal);
+      }
+
+      container.appendChild(frag);
+    })();
+
+    (function createFlyingRoses() {
+      const container = document.getElementById("roses");
+      if (!container) return;
+
+      const roseCount = window.innerWidth < 700 ? 14 : 24;
+      const frag = document.createDocumentFragment();
+
+      for (let i = 0; i < roseCount; i += 1) {
+        const rose = document.createElement("span");
+        rose.className = "rose";
+        rose.textContent = "🌸";
+
+        const size = 15 + Math.random() * 13;
+        const opacity = 0.18 + Math.random() * 0.25;
+        const duration = 10 + Math.random() * 8;
+        const delay = Math.random() * -24;
+        const direction = Math.random() > 0.5 ? 1 : -1;
+        const startX = direction > 0 ? -12 - Math.random() * 14 : 112 + Math.random() * 14;
+        const startY = Math.random() * 100;
+        const endX = direction > 0 ? 118 + Math.random() * 10 : -18 - Math.random() * 10;
+        const endY = startY + (Math.random() * 24 - 12);
+        const travelX = endX - startX;
+        const travelY = endY - startY;
+        const x1 = travelX * 0.35;
+        const x2 = travelX * 0.7;
+        const y1 = travelY * 0.35 + (Math.random() * 20 - 10);
+        const y2 = travelY * 0.7 + (Math.random() * 24 - 12);
+
+        rose.style.setProperty("--size", `${size.toFixed(1)}px`);
+        rose.style.setProperty("--opacity", opacity.toFixed(2));
+        rose.style.setProperty("--dur", `${duration.toFixed(2)}s`);
+        rose.style.setProperty("--delay", `${delay.toFixed(2)}s`);
+        rose.style.setProperty("--start-x", `${startX.toFixed(2)}vw`);
+        rose.style.setProperty("--start-y", `${startY.toFixed(2)}vh`);
+        rose.style.setProperty("--travel-x", `${travelX.toFixed(2)}vw`);
+        rose.style.setProperty("--travel-y", `${travelY.toFixed(2)}vh`);
+        rose.style.setProperty("--x1", `${x1.toFixed(2)}vw`);
+        rose.style.setProperty("--x2", `${x2.toFixed(2)}vw`);
+        rose.style.setProperty("--y1", `${y1.toFixed(2)}vh`);
+        rose.style.setProperty("--y2", `${y2.toFixed(2)}vh`);
+
+        frag.appendChild(rose);
+      }
+
+      container.appendChild(frag);
+    })();
+  </script>
+</body>
+</html>
