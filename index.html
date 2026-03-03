@@ -325,6 +325,142 @@
       animation-delay: 0.42s;
     }
 
+    .guest-section {
+      margin-top: 1.7rem;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(240, 98, 146, 0.26);
+      background: linear-gradient(180deg, rgba(255, 250, 252, 0.94), rgba(255, 238, 245, 0.9));
+      animation: fadeUp 1s ease both;
+      animation-delay: 0.5s;
+    }
+
+    .guest-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    .guest-head h2 {
+      margin: 0;
+      font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+      color: #b71c1c;
+    }
+
+    .guest-hint {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .guest-carousel {
+      margin-top: 0.85rem;
+      position: relative;
+    }
+
+    .guest-viewport {
+      display: flex;
+      gap: 0.9rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 0.25rem 0.2rem 0.65rem;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(229, 57, 53, 0.48) transparent;
+      cursor: grab;
+      user-select: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .guest-viewport.dragging {
+      cursor: grabbing;
+      scroll-behavior: auto;
+    }
+
+    .guest-card {
+      flex: 0 0 clamp(170px, 24vw, 220px);
+      scroll-snap-align: start;
+      border-radius: 14px;
+      border: 1px solid rgba(240, 98, 146, 0.24);
+      background: #fff8fb;
+      box-shadow: 0 8px 18px rgba(240, 98, 146, 0.16);
+      overflow: hidden;
+      opacity: 0.92;
+      transition: transform 0.24s ease, box-shadow 0.24s ease, opacity 0.24s ease, border-color 0.24s ease;
+    }
+
+    .guest-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 24px rgba(229, 57, 53, 0.22);
+    }
+
+    .guest-card.is-active {
+      opacity: 1;
+      border-color: rgba(229, 57, 53, 0.5);
+      box-shadow: 0 16px 28px rgba(229, 57, 53, 0.26);
+      animation: guestPop 0.52s ease;
+    }
+
+    .guest-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      pointer-events: none;
+      background: #ffe3ec;
+      transition: transform 0.52s ease;
+    }
+
+    .guest-card.is-active img {
+      transform: scale(1.04);
+    }
+
+    .guest-name {
+      margin: 0;
+      padding: 0.72rem 0.58rem 0.82rem;
+      text-align: center;
+      color: #8d2046;
+      font-size: 0.96rem;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .guest-btn {
+      position: absolute;
+      top: 42%;
+      transform: translateY(-50%);
+      width: 34px;
+      height: 34px;
+      border: none;
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(120deg, #ef5350, #ec407a);
+      box-shadow: 0 8px 16px rgba(229, 57, 53, 0.24);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      z-index: 5;
+      opacity: 0.92;
+    }
+
+    .guest-btn:hover {
+      transform: translateY(-50%) scale(1.05);
+      box-shadow: 0 12px 20px rgba(229, 57, 53, 0.32);
+    }
+
+    .guest-btn:active {
+      transform: translateY(-50%) scale(0.96);
+    }
+
+    .guest-btn.prev {
+      left: -0.25rem;
+    }
+
+    .guest-btn.next {
+      right: -0.25rem;
+    }
+
     @keyframes fadeUp {
       from {
         opacity: 0;
@@ -333,6 +469,20 @@
       to {
         opacity: 1;
         transform: translateY(0);
+      }
+    }
+
+    @keyframes guestPop {
+      0% {
+        transform: scale(0.94);
+        opacity: 0.72;
+      }
+      60% {
+        transform: scale(1.03);
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
       }
     }
 
@@ -369,6 +519,14 @@
         width: 100%;
         max-width: 320px;
       }
+
+      .guest-card {
+        flex-basis: 64vw;
+      }
+
+      .guest-btn {
+        display: none;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -382,7 +540,9 @@
       }
 
       .info-card,
-      .cta {
+      .cta,
+      .guest-card,
+      .guest-btn {
         transition: none !important;
       }
     }
@@ -431,6 +591,17 @@
     </div>
 
     <p class="footer-text">“Hẹn gặp lại bạn tại sự kiện thật vui và ý nghĩa này!”</p>
+
+    <section class="guest-section" aria-label="Danh sách khách mời">
+      <div class="guest-head">
+        <h2>Danh sách khách mời</h2>
+      </div>
+      <div class="guest-carousel">
+        <button class="guest-btn prev" type="button" id="guest-prev" aria-label="Xem khách mời trước">&#10094;</button>
+        <div class="guest-viewport" id="guest-viewport"></div>
+        <button class="guest-btn next" type="button" id="guest-next" aria-label="Xem khách mời tiếp theo">&#10095;</button>
+      </div>
+    </section>
   </main>
 
   <script>
@@ -510,6 +681,209 @@
       }
 
       container.appendChild(frag);
+    })();
+
+    (function createGuestSlider() {
+      const viewport = document.getElementById("guest-viewport");
+      const prevBtn = document.getElementById("guest-prev");
+      const nextBtn = document.getElementById("guest-next");
+      if (!viewport) return;
+
+      const guestFiles = [
+        "Dung Mama.png",
+        "Nguyễn Hồng Nhung.png",
+        "Nguyễn Thanh Huyền.png",
+        "Nguyễn Thu Thảo.png",
+        "Nguyễn Thị Hải.png",
+        "Nguyễn Thị Lan Anh.png",
+        "Nguyễn Thị Liên.png",
+        "Phạm Thị Ngân.png",
+        "Đào Phương Thủy.png"
+      ];
+
+      const cardsFrag = document.createDocumentFragment();
+      for (const fileName of guestFiles) {
+        const guestName = fileName.replace(/\.[^.]+$/, "");
+        const card = document.createElement("article");
+        card.className = "guest-card";
+
+        const image = document.createElement("img");
+        image.src = `avatar/${encodeURIComponent(fileName)}`;
+        image.alt = guestName;
+        image.loading = "lazy";
+        image.decoding = "async";
+
+        const name = document.createElement("h3");
+        name.className = "guest-name";
+        name.textContent = guestName;
+
+        card.appendChild(image);
+        card.appendChild(name);
+        cardsFrag.appendChild(card);
+      }
+      viewport.appendChild(cardsFrag);
+
+      const guestCards = Array.from(viewport.querySelectorAll(".guest-card"));
+      let activeIndex = -1;
+      let clearPopTimer = null;
+      const setActiveCard = () => {
+        if (!guestCards.length) return;
+
+        const center = viewport.scrollLeft + viewport.clientWidth / 2;
+        let nearestIndex = 0;
+        let nearestDistance = Number.POSITIVE_INFINITY;
+
+        for (let i = 0; i < guestCards.length; i += 1) {
+          const card = guestCards[i];
+          const cardCenter = card.offsetLeft + card.clientWidth / 2;
+          const distance = Math.abs(center - cardCenter);
+          if (distance < nearestDistance) {
+            nearestDistance = distance;
+            nearestIndex = i;
+          }
+        }
+
+        if (nearestIndex === activeIndex) return;
+        if (activeIndex >= 0) {
+          guestCards[activeIndex].classList.remove("is-active");
+        }
+
+        activeIndex = nearestIndex;
+        const activeCard = guestCards[activeIndex];
+        activeCard.classList.add("is-active");
+
+        clearTimeout(clearPopTimer);
+        clearPopTimer = setTimeout(() => {
+          activeCard.classList.remove("is-active");
+          if (activeCard === guestCards[activeIndex]) {
+            activeCard.classList.add("is-active");
+          }
+        }, 560);
+      };
+
+      const getStep = () => {
+        const card = viewport.querySelector(".guest-card");
+        if (!card) return 220;
+        const gap = 14;
+        return card.getBoundingClientRect().width + gap;
+      };
+
+      const supportsSmoothScroll = "scrollBehavior" in document.documentElement.style;
+      const scrollToLeft = (leftValue) => {
+        if (supportsSmoothScroll) {
+          viewport.scrollTo({ left: leftValue, behavior: "smooth" });
+          return;
+        }
+        viewport.scrollLeft = leftValue;
+      };
+      const scrollByAmount = (offset) => {
+        if (supportsSmoothScroll) {
+          viewport.scrollBy({ left: offset, behavior: "smooth" });
+          return;
+        }
+        viewport.scrollLeft += offset;
+      };
+
+      const goNext = () => {
+        const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+        if (viewport.scrollLeft >= maxScroll - 8) {
+          scrollToLeft(0);
+          return;
+        }
+        scrollByAmount(getStep());
+      };
+
+      const goPrev = () => {
+        const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+        if (viewport.scrollLeft <= 8) {
+          scrollToLeft(maxScroll);
+          return;
+        }
+        scrollByAmount(-getStep());
+      };
+
+      if (prevBtn) prevBtn.addEventListener("click", goPrev);
+      if (nextBtn) nextBtn.addEventListener("click", goNext);
+
+      let rafId = 0;
+      viewport.addEventListener("scroll", () => {
+        if (rafId) return;
+        rafId = window.requestAnimationFrame(() => {
+          setActiveCard();
+          rafId = 0;
+        });
+      });
+
+      let autoTimer = null;
+      const startAuto = () => {
+        if (guestFiles.length < 2) return;
+        clearInterval(autoTimer);
+        autoTimer = setInterval(goNext, 3200);
+      };
+      const stopAuto = () => {
+        clearInterval(autoTimer);
+        autoTimer = null;
+      };
+
+      let dragging = false;
+      let pointerId = null;
+      let startX = 0;
+      let startScroll = 0;
+
+      viewport.addEventListener("pointerdown", (event) => {
+        if (event.pointerType !== "mouse" || event.button !== 0) return;
+        dragging = true;
+        pointerId = event.pointerId;
+        startX = event.clientX;
+        startScroll = viewport.scrollLeft;
+        viewport.classList.add("dragging");
+        viewport.setPointerCapture(pointerId);
+        stopAuto();
+      });
+
+      viewport.addEventListener("pointermove", (event) => {
+        if (!dragging) return;
+        const delta = event.clientX - startX;
+        viewport.scrollLeft = startScroll - delta;
+      });
+
+      const endDrag = () => {
+        if (!dragging) return;
+        dragging = false;
+        viewport.classList.remove("dragging");
+        if (pointerId !== null && viewport.hasPointerCapture(pointerId)) {
+          viewport.releasePointerCapture(pointerId);
+        }
+        pointerId = null;
+        startAuto();
+      };
+
+      viewport.addEventListener("pointerup", endDrag);
+      viewport.addEventListener("pointercancel", endDrag);
+      viewport.addEventListener("lostpointercapture", endDrag);
+
+      const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      if (canHover) {
+        viewport.addEventListener("mouseenter", stopAuto);
+        viewport.addEventListener("mouseleave", startAuto);
+      }
+
+      viewport.addEventListener("touchstart", stopAuto, { passive: true });
+      viewport.addEventListener("touchend", startAuto, { passive: true });
+      viewport.addEventListener("touchcancel", startAuto, { passive: true });
+      viewport.addEventListener("focusin", stopAuto);
+      viewport.addEventListener("focusout", startAuto);
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          stopAuto();
+        } else {
+          startAuto();
+        }
+      });
+
+      setActiveCard();
+      startAuto();
     })();
   </script>
 </body>
